@@ -312,7 +312,7 @@ class DeliveryDayModelTest extends TestCase
      * 
      * @return void
      */
-    public function testAModelCanBeupdated()
+    public function testAModelCanBeUpdated()
     {
         $this->withoutExceptionHandling();
         $this->user->givePermissionTo('model_edit');
