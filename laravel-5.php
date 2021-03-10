@@ -315,7 +315,7 @@ class DeliveryDayModelTest extends TestCase
     public function testAModelCanBeupdated()
     {
         $this->withoutExceptionHandling();
-        $this->user->givePermissionTo('model_update');
+        $this->user->givePermissionTo('model_edit');
         $model = Model::factory()->create();
 
         $data = [
@@ -383,7 +383,7 @@ class DeliveryDayModelTest extends TestCase
      */
     public function testErrorUpdatingAModelWhenRequiredFieldsAreEmpty()
     {
-        $this->user->givePermissionTo('model_update');
+        $this->user->givePermissionTo('model_edit');
         $model = Model::factory()->create();
 
         $data = [
