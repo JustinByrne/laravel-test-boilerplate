@@ -323,7 +323,7 @@ class DeliveryDayModelTest extends TestCase
             'col2' => $this->faker->word(),
         ];
 
-        $response = $this->actingAs($this->user)->patch(route('edit', $model), $data);
+        $response = $this->actingAs($this->user)->patch(route('update', $model), $data);
 
         $this->assertDatabaseHas(Model::getTableName(), $data);
         $response->assertSessionHas('message', [
@@ -349,7 +349,7 @@ class DeliveryDayModelTest extends TestCase
             'col2' => $this->faker->word(),
         ];
 
-        $response = $this->patch(route('edit', $model), $data);
+        $response = $this->patch(route('update', $model), $data);
 
         $this->assertGuest($guard = null);
         $response->assertRedirect('/login');
@@ -371,7 +371,7 @@ class DeliveryDayModelTest extends TestCase
             'col2' => $this->faker->word(),
         ];
 
-        $response = $this->actingAs($this->user)->patch(route('edit', $model), $data);
+        $response = $this->actingAs($this->user)->patch(route('update', $model), $data);
 
         $response->assertForbidden();
     }
@@ -391,7 +391,7 @@ class DeliveryDayModelTest extends TestCase
             'col2' => null,
         ];
 
-        $response = $this->actingAs($this->user)->patch(route('edit', $model), $data);
+        $response = $this->actingAs($this->user)->patch(route('update', $model), $data);
 
         $this->assertDatabaseHas(Model::getTableName(), [
             'col1' => $model->col1,
