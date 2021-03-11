@@ -140,10 +140,8 @@ class DeliveryDayModelTest extends TestCase
         $model = Model::where('col1', $data['col1'])->first();
 
         $this->assertDatabaseHas(Model::getTableName(), $data);
-        $response->assertSessionHas('message', [
-            'state' => 'success',
-            'content' => 'The Model was created successfully',
-        ]);
+        $response->assertSessionHas('state', 'success');
+        $response->assertSessionHas('content', 'The Model was created successfully');
         $response->assertRedirect(route('show', [$model->id]));
     }
 
@@ -326,10 +324,8 @@ class DeliveryDayModelTest extends TestCase
         $response = $this->actingAs($this->user)->patch(route('update', $model), $data);
 
         $this->assertDatabaseHas(Model::getTableName(), $data);
-        $response->assertSessionHas('message', [
-            'state' => 'success',
-            'content' => 'The Model was updated successfully',
-        ]);
+        $response->assertSessionHas('state', 'success');
+        $response->assertSessionHas('content', 'The Model was updated successfully');
         $response->assertRedirect(route('show', [$model->id]));
     }
 
