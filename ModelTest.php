@@ -49,9 +49,6 @@ class DeliveryDayModelTest extends TestCase
      */
     public function testDeniedIndexPageWhenNotLoggedIn()
     {
-        $this->withoutExceptionHandling();
-        $this->expectException('Illuminate\Auth\AuthenticationException');
-
         $response = $this->get(route('index'));
 
         $this->assertGuest($guard = null);
@@ -65,9 +62,6 @@ class DeliveryDayModelTest extends TestCase
      */
     public function testDeniedIndexPageWithoutPermission()
     {
-        $this->withoutExceptionHandling();
-        $this->expectException('Symfony\Component\HttpKernel\Exception\HttpException');
-
         $response = $this->actingAs($this->user)->get(route('index'));
 
         $response->assertForbidden();
@@ -96,9 +90,6 @@ class DeliveryDayModelTest extends TestCase
      */
     public function testDeniedCreatePageWhenNotLoggedIn()
     {
-        $this->withoutExceptionHandling();
-        $this->expectException('Illuminate\Auth\AuthenticationException');
-
         $response = $this->get(route('create'));
 
         $this->assertGuest($guard = null);
@@ -112,9 +103,6 @@ class DeliveryDayModelTest extends TestCase
      */
     public function testDeniedCreatePageWithoutPermission()
     {
-        $this->withoutExceptionHandling();
-        $this->expectException('Symfony\Component\HttpKernel\Exception\HttpException');
-
         $response = $this->actingAs($this->user)->get(route('create'));
 
         $response->assertForbidden();
@@ -152,9 +140,6 @@ class DeliveryDayModelTest extends TestCase
      */
     public function testDeniedCreatingAModelWhenNotLoggedIn()
     {
-        $this->withoutExceptionHandling();
-        $this->expectException('Illuminate\Auth\AuthenticationException');
-
         $data = [
             'col1' => $this->faker->word(),
             'col2' => $this->faker->word(),
@@ -173,9 +158,6 @@ class DeliveryDayModelTest extends TestCase
      */
     public function testDeniedCreatingAModelWithoutPermission()
     {
-        $this->withoutExceptionHandling();
-        $this->expectException('Symfony\Component\HttpKernel\Exception\HttpException');
-
         $data = [
             'col1' => $this->faker->word(),
             'col2' => $this->faker->word(),
@@ -229,8 +211,6 @@ class DeliveryDayModelTest extends TestCase
      */
     public function testDeniedShowPageWhenNotLoggedIn()
     {
-        $this->withoutExceptionHandling();
-        $this->expectException('Illuminate\Auth\AuthenticationException');
         $model = Model::factory()->create();
 
         $response = $this->get(route('show', $model));
@@ -246,8 +226,6 @@ class DeliveryDayModelTest extends TestCase
      */
     public function testDeniedShowPageWithoutPermission()
     {
-        $this->withoutExceptionHandling();
-        $this->expectException('Symfony\Component\HttpKernel\Exception\HttpException');
         $model = Model::factory()->create();
 
         $response = $this->actingAs($this->user)->get(route('show', $model));
@@ -279,8 +257,6 @@ class DeliveryDayModelTest extends TestCase
      */
     public function testDeniedEditPageWhenNotLoggedIn()
     {
-        $this->withoutExceptionHandling();
-        $this->expectException('Illuminate\Auth\AuthenticationException');
         $model = Model::factory()->create();
 
         $response = $this->get(route('edit', $model));
@@ -296,8 +272,6 @@ class DeliveryDayModelTest extends TestCase
      */
     public function testDeniedEditPageWithoutPermission()
     {
-        $this->withoutExceptionHandling();
-        $this->expectException('Symfony\Component\HttpKernel\Exception\HttpException');
         $model = Model::factory()->create();
 
         $response = $this->actingAs($this->user)->get(route('edit', $model));
@@ -336,8 +310,6 @@ class DeliveryDayModelTest extends TestCase
      */
     public function testDeniedUpdatingAModelWhenNotLoggedIn()
     {
-        $this->withoutExceptionHandling();
-        $this->expectException('Illuminate\Auth\AuthenticationException');
         $model = Model::factory()->create();
 
         $data = [
@@ -358,8 +330,6 @@ class DeliveryDayModelTest extends TestCase
      */
     public function testDeniedUpdatingAModelWithoutPermission()
     {
-        $this->withoutExceptionHandling();
-        $this->expectException('Symfony\Component\HttpKernel\Exception\HttpException');
         $model = Model::factory()->create();
 
         $data = [
@@ -420,8 +390,6 @@ class DeliveryDayModelTest extends TestCase
      */
     public function testDeniedDeletingAModelWhenNotLoggedIn()
     {
-        $this->withoutExceptionHandling();
-        $this->expectException('Illuminate\Auth\AuthenticationException');
         $model = Model::factory()->create();
         
         $response = $this->delete(route('destroy', $model));
@@ -437,8 +405,6 @@ class DeliveryDayModelTest extends TestCase
      */
     public function testDeniedDeletingAModelWithoutPermission()
     {
-        $this->withoutExceptionHandling();
-        $this->expectException('Symfony\Component\HttpKernel\Exception\HttpException');
         $model = Model::factory()->create();
         
         $response = $this->actingAs($this->user)->delete(route('destroy', $model));
